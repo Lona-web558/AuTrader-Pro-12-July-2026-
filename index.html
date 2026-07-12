@@ -889,7 +889,7 @@ async function initiateBitcoinWithdraw(){
   if(!amount||amount<10){showStatus(st,'⚠ Minimum withdrawal is R10.00','err');return;}
   if(amount>STATE.balance){showStatus(st,'⚠ Insufficient balance. Available: R'+STATE.balance.toFixed(2),'err');return;}
   if(!address){showStatus(st,'⚠ Enter your Bitcoin wallet address.','err');return;}
-  if(!isValidBtcAddress(address)){showStatus(st,'⚠ That doesn\\'t look like a valid Bitcoin address.','err');return;}
+  if(!isValidBtcAddress(address)){showStatus(st,'⚠ That does not look like a valid Bitcoin address.','err');return;}
   if(!STATE.btcRate||STATE.btcRate<=0){showStatus(st,'⚠ Live rate unavailable, please reopen this window.','err');return;}
 
   showStatus(st,'Converting to BTC and submitting request...','loading');
