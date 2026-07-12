@@ -18,6 +18,7 @@ const authRoutes = require('./auth');
 const walletRoutes = require('./wallet');
 
 const app = express();
+const path = require("path");
 const PORT = process.env.PORT || 3000;
 
 db.ensureDataFiles();
@@ -25,14 +26,8 @@ db.ensureDataFiles();
 app.use(cors());
 app.use(express.json());
 app.use(requestLogger);
+app.use(express.static(path.join(__dirname)));
 
-app.get('/', (req, res) => {
-  res.json({
-    service: 'AuTrader Pro Bitcoin Wallet Backend',
-    status: 'running',
-    time: new Date().toISOString(),
-  });
-});
 
 app.get('/health', (req, res) => res.json({ ok: true }));
 
@@ -46,6 +41,11 @@ app.use((req, res) => {
 
 // Central error handler — must be last
 app.use(errorHandler);
+
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`AuTrader Bitcoin backend listening on port ${PORT}`);
