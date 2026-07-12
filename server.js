@@ -15,7 +15,7 @@ const cors = require('cors');
 const db = require('./db');
 const { requestLogger, errorHandler } = require('./middleware');
 const authRoutes = require('./auth');
-const walletRoutes = require('.//wallet');
+const walletRoutes = require('./wallet');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
