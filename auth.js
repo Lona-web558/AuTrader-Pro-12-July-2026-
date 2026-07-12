@@ -12,7 +12,7 @@ const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 
 const db = require('../db');
-const { JWT_SECRET } = require('../middleware');
+const { JWT_SECRET } = require('./middleware');
 
 const router = express.Router();
 
