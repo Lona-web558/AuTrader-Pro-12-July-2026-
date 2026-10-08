@@ -1,0 +1,16 @@
+body { background: #f7f5f0; color: #1d2433; }
+.popup-host { position: fixed; left: 16px; bottom: 16px; z-index: 1080; max-width: calc(100vw - 32px); }
+.purchase-popup {
+  display: flex; gap: 12px; align-items: center; width: 320px; max-width: 100%;
+  background: #fff; border: 1px solid #e3ded2; border-left: 4px solid #b8860b;
+  border-radius: 10px; padding: 12px 14px; box-shadow: 0 8px 24px rgba(20, 30, 50, .14);
+  transform: translateY(20px); opacity: 0; transition: transform .35s ease, opacity .35s ease;
+}
+.purchase-popup.show { transform: none; opacity: 1; }
+.purchase-popup .avatar {
+  flex: none; width: 40px; height: 40px; border-radius: 50%;
+  background: #1d2433; color: #f3d98b; display: grid; place-items: center; font-weight: 700;
+}
+.purchase-popup .meta { font-size: .78rem; color: #6b7280; }
+.purchase-popup .close-btn { margin-left: auto; align-self: flex-start; }
+@media (prefers-reduced-motion: reduce) { .purchase-popup { transition: none; } }
