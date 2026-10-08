@@ -2573,5 +2573,75 @@ setInterval(showNext, 2000);
 
 updateBalance(); updateStats(); updatePriceTicker();
 </script>
+    <script>
+/* ═══════════════════════════════
+   DEMO SIGNUP POPUPS
+   Simulated activity for demo accounts.
+═══════════════════════════════ */
+const SignupPopups = (function(){
+
+  const SHOW_MS = 5000;
+  const GAP_MS = 10000;
+
+  const demoSignups = [
+    { name: 'Liam M.', time: 'just now' },
+    { name: 'Sarah K.', time: '2 min ago' },
+    { name: 'Daniel P.', time: '3 min ago' },
+    { name: 'Jessica T.', time: '5 min ago' },
+    { name: 'Michael R.', time: '7 min ago' },
+    { name: 'Thabo M.', time: '9 min ago' },
+    { name: 'Olivia S.', time: '11 min ago' },
+    { name: 'James N.', time: '13 min ago' },
+    { name: 'Emily W.', time: '15 min ago' },
+    { name: 'Ryan D.', time: '18 min ago' },
+    { name: 'Mia L.', time: '21 min ago' },
+    { name: 'Ethan B.', time: '24 min ago' }
+  ];
+
+  let index = 0;
+  let busy = false;
+
+  function showNext(){
+
+    if(busy || document.hidden) return;
+
+    const popup = document.getElementById('signup-popup');
+    if(!popup) return;
+
+    const signup = demoSignups[index % demoSignups.length];
+    index++;
+
+    busy = true;
+
+    document.getElementById('spName').textContent = signup.name;
+    document.getElementById('spIc').textContent =
+      signup.name.charAt(0);
+
+    document.getElementById('spTime').textContent =
+      signup.time + ' · DEMO ACTIVITY';
+
+    popup.classList.add('show');
+
+    setTimeout(() => {
+      popup.classList.remove('show');
+
+      setTimeout(() => {
+        busy = false;
+      }, GAP_MS - SHOW_MS);
+
+    }, SHOW_MS);
+  }
+
+  // First popup after 3 seconds
+  setTimeout(showNext, 3000);
+
+  // Continue displaying simulated signups
+  setInterval(showNext, GAP_MS);
+
+})();
+
+
+    
+</script>
 </body>
 </html>
